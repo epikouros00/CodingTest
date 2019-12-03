@@ -35,11 +35,11 @@ TypedefPascalTriangle* makePascalTriangle(int num)
 
 unsigned long long getCatalanNum(int num)
 {
-    TypedefPascalTriangle *ptri = makePascalTriangle((num+1)*2);
+    TypedefPascalTriangle *ptri = makePascalTriangle((num*2)+1);
     
     unsigned long long answer = (ptri[num*2].value[num-1] / (num));
     /* free pPascalTriangle */
-    for(int i=0; i<(num+2)+1; ++i)
+    for(int i=0; i<(num*2)+1; ++i)
     {
         free(ptri[i].value);
     }
@@ -67,7 +67,6 @@ int main()
         }
         printf("\n");
     }
-    
     /* free pPascalTriangle */
     for(int i=0; i<num*2+1; ++i)
     {
@@ -75,9 +74,10 @@ int main()
     }
     free(pPascalTriangle);
 
+    /* print catalan number of the pascal triangle */
     printf("Catalan Number: %llu \n", getCatalanNum(num));
-    printf("%lld \n", LLONG_MAX);
-    printf("%llu \n", ULLONG_MAX);
+//    printf("%lld \n", LLONG_MAX);
+//    printf("%llu \n", ULLONG_MAX);
     return 1;
 }
 
