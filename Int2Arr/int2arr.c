@@ -5,25 +5,36 @@
 int* solution(long long n) {
     int digit = 0;
     long long div = 1;
-    while(true)
+    while(n/div)
     {
-        if((n/div) > 0){ 
-            digit++;
-            div *= 10;
-        }
-        else { 
-            break;
-        }
+        digit++;
+        div *= 10;
     }
-        
     int* answer = (int*)malloc(sizeof(int)*digit);
     memset(answer, 0, sizeof(char)*digit);
-    
     for (int i = 0; i<digit; ++i)
     {
-        n %= div;
-        div /= 10;
-        answer[digit -1 -i] = n / div;
+        answer[i] = n % 10;
+        n /= 10;
+    }
+    return answer;
+}
+
+int* solution2(long long n) {
+    long long num = n;
+    int pos = 0;
+    while(num)
+    {
+        num /=10;
+        pos++;
+    }
+    int* answer = (int*)malloc(sizeof(int)*pos);
+    num = n;
+    pos = 0;
+    while(num)
+    {
+        answer[pos++] = num % 10;       
+        num /= 10;
     }
     return answer;
 }
@@ -41,6 +52,16 @@ int main()
         printf("%d, ", arr[i]);
     }
     printf("]\n");
+    free(arr);
+
+    int* arr2 = solution2(num);
+    printf("[ ");
+    for(int i= 0; i<_msize(arr2)/sizeof(int); ++i)
+    {
+        printf("%d, ", arr2[i]);
+    }
+    printf("]\n");
+    free(arr2);
 
     return 1;
 }
