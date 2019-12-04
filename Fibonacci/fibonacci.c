@@ -9,7 +9,7 @@ long long solution(int num)
 	long long t2 = 1;
 	for(int i = 2; i<=num; ++i)
 	{
-		answer = t1 +t2;
+		answer = (t1 + t2) % 1234567;
 		t1 = t2;
 		t2 = answer;
 	}
@@ -18,7 +18,7 @@ long long solution(int num)
 
 int main()
 {
-	printf("Input number(1~1000): ");
+	printf("Input number(1~100000): ");
 	int num;
 	scanf("%d", &num);
 
