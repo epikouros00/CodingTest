@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include <math.h>
 
+/***************************************************** 
+ * getting GCD 
+ * If A = ag, B=bg then A-B = (a-b)g
+ * Repeating the subtraction makes (1) * g 
+ ****************************************************/
 long long getGCD(int a, int b)
 {
     while(a != b) {
@@ -13,7 +18,7 @@ long long getGCD(int a, int b)
 }
     
 long long solution(int w, int h) {
-    long long answer = w * h;
+    long long answer = (long long)w * h;
     return (answer - (w + h - getGCD(w, h)));
 }
 
